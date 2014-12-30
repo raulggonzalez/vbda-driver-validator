@@ -1,6 +1,6 @@
 {
   "name": "vdba-driver-validator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "VDBA driver validator.",
   "author": "Raúl G. González <raulggonzalezsw@outlook.com>",
   "keywords": [
