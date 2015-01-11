@@ -66,11 +66,11 @@ describe("vdba.Driver", function() {
     });
 
     it("openConnection(config, callback)", function(done) {
-      drv.openConnection(config.connection.config, function(error, con) {
+      drv.openConnection(config.connection.config, function(error, cx) {
         should.assert(error === undefined);
-        con.should.be.instanceOf(vdba.Connection);
-        con.connected.should.be.eql(true);
-        con.close(done);
+        cx.should.be.instanceOf(vdba.Connection);
+        //cx.connected.should.be.eql(true);
+        cx.close(done);
       });
     });
   });

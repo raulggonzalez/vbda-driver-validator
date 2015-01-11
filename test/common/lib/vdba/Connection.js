@@ -25,7 +25,6 @@ describe("vdba.<driver>.Connection", function() {
 
     it("database", function() {
       cx.database.should.be.instanceOf(vdba.Database);
-      cx.database.name.should.be.eql(config.connection.config.database);
     });
   });
 
