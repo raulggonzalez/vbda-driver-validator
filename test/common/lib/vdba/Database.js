@@ -330,56 +330,56 @@ describe("vdba.<driver>.Database", function() {
             });
           });
 
-          it("hasTable(schema, table, {column: {nullable: true}}, callback)", function(done) {
-            db.hasTable(user.schema, user.name, {username: {nullable: true}}, function(error, exists) {
+          it("hasTable(schema, table, {column: {required: false}}, callback)", function(done) {
+            db.hasTable(user.schema, user.name, {username: {required: false}}, function(error, exists) {
               should.assert(error === undefined);
               exists.should.be.eql(false);
               done();
             });
           });
 
-          it("hasTable(schema, table, {column: {nullable: false}}, callback)", function(done) {
-            db.hasTable(user.schema, user.name, {username: {nullable: false}}, function(error, exists) {
+          it("hasTable(schema, table, {column: {required: true}}, callback)", function(done) {
+            db.hasTable(user.schema, user.name, {username: {required: true}}, function(error, exists) {
               should.assert(error === undefined);
               exists.should.be.eql(true);
               done();
             });
           });
 
-          it("hasTable(schema, table, {column: {primaryKey: true}}, callback)", function(done) {
-            db.hasTable(user.schema, user.name, {userId: {primaryKey: true}}, function(error, exists) {
+          it("hasTable(schema, table, {column: {id: true}}, callback)", function(done) {
+            db.hasTable(user.schema, user.name, {userId: {id: true}}, function(error, exists) {
               should.assert(error === undefined);
               exists.should.be.eql(true);
               done();
             });
           });
 
-          it("hasTable(schema, table, {column: {primaryKey: false}}, callback)", function(done) {
-            db.hasTable(user.schema, user.name, {userId: {primaryKey: false}}, function(error, exists) {
+          it("hasTable(schema, table, {column: {id: !true}}, callback)", function(done) {
+            db.hasTable(user.schema, user.name, {userId: {id: false}}, function(error, exists) {
               should.assert(error === undefined);
               exists.should.be.eql(false);
               done();
             });
           });
 
-          it("hasTable(schema, table, {column: {type: 'type', nullable: false}}, callback)", function(done) {
-            db.hasTable(user.schema, user.name, {username: {type: "text", nullable: false}}, function(error, exists){
+          it("hasTable(schema, table, {column: {type: 'type', required: true}}, callback)", function(done) {
+            db.hasTable(user.schema, user.name, {username: {type: "text", required: true}}, function(error, exists){
               should.assert(error === undefined);
               exists.should.be.eql(true);
               done();
             });
           });
 
-          it("hasTable(schema, table, {column: {type: 'another', nullable: false}}, callback)", function(done) {
-            db.hasTable(user.schema, user.name, {username: {type: "integer", nullable: false}}, function(error, exists) {
+          it("hasTable(schema, table, {column: {type: 'another', required: true}}, callback)", function(done) {
+            db.hasTable(user.schema, user.name, {username: {type: "integer", required: true}}, function(error, exists) {
               should.assert(error === undefined);
               exists.should.be.eql(false);
               done();
             });
           });
 
-          it("hasTable(schema, table, {column: {type: 'type', nullable: !false}}, callback)", function(done)  {
-            db.hasTable(user.schema, user.name, {username: {type: "text", nullable: true}}, function(error, exists) {
+          it("hasTable(schema, table, {column: {type: 'type', required: !true}}, callback)", function(done)  {
+            db.hasTable(user.schema, user.name, {username: {type: "text", required: false}}, function(error, exists) {
               should.assert(error === undefined);
               exists.should.be.eql(false);
               done();

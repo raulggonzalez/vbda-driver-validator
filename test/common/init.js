@@ -8,11 +8,11 @@ config.database = {
     name: "user",
     qn: "sec.user",
     columns: {
-      userId: {type: "sequence", pk: true},
-      username: {type: "text", uq: true, nullable: false},
-      password: {type: "text", nullable: false},
-      createDate: {type: "date", nullable: false},
-      enabled: {type: "boolean", nullable: false}
+      userId: {type: "sequence", id: true},
+      username: {type: "text", uq: true, required: true},
+      password: {type: "text", required: true},
+      createDate: {type: "date", required: true},
+      enabled: {type: "boolean", required: true}
     },
     index: {
       name: "ix_user_username",
@@ -35,7 +35,7 @@ config.database = {
     name: "profile",
     qn: "sec.profile",
     columns: {
-      userId: {type: "integer", pk: true, ref: "sec.user.userId"},
+      userId: {type: "integer", id: true, ref: "sec.user.userId"},
       nick: "text",
       emails: {type: "set<text>"}
     },
@@ -55,9 +55,9 @@ config.database = {
     name: "session",
     qn: "sec.session",
     columns: {
-      sessionId: {type: "sequence", pk: true},
-      userId: {type: "integer", nullable: false, ref: "sec.user.userId"},
-      login: {type: "datetime", nullable: false},
+      sessionId: {type: "sequence", id: true},
+      userId: {type: "integer", required: true, ref: "sec.user.userId"},
+      login: {type: "datetime", required: true},
       clickedArticles: {type: "set<integer>"},
       minutes: {type: "real"}
     },
